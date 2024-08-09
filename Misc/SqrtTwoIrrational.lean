@@ -23,9 +23,6 @@ theorem sqrt_two_irrational : Irrational √2 := by
       exact h.symm)
     exact (Int.even_coe_nat b).mp bZ_even
   absurd x.reduced
-  rw [Nat.Prime.not_coprime_iff_dvd]
-  use 2
-  apply And.intro; exact Nat.prime_two
-  apply And.intro <;> rw [← even_iff_two_dvd]
-  · exact aN_even
-  · exact b_even
+  rw [Nat.Prime.not_coprime_iff_dvd]; use 2
+  rw [← even_iff_two_dvd, ← even_iff_two_dvd]
+  exact ⟨Nat.prime_two, aN_even, b_even⟩
