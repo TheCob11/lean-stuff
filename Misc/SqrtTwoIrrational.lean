@@ -1,4 +1,4 @@
-import mathlib
+import Mathlib
 lemma even_sq {a: ℤ} (h: Even (a^2)) : Even a := (Int.even_pow' two_ne_zero).mp h
 theorem sqrt_two_irrational : Irrational √2 := by
   rw [irrational_iff_ne_rational];

@@ -1,4 +1,4 @@
-import mathlib
+import Mathlib
 open Nat
 theorem infinite_primes : Infinite Primes := by
   rw [Primes, ← Set.coe_setOf, Set.infinite_coe_iff, Set.infinite_iff_exists_gt]
