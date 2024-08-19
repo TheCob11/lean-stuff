@@ -5,4 +5,5 @@ Currently includes:
     - [Irrationality of the nth root of two](Misc/NrtTwoIrrational.lean)
     - [Irrationality of the nth root of a prime](Misc/NrtPrimeIrrational.lean)
 - [Infinitude of the primes](Misc/InfPrimes.lean)
-- [Orbit-Stabilizer Theorem](Misc/OrbitStabilizer.lean)
+
+See also [my proofs](https://github.com/TheCob11/PaulinIntroToAbstractAlgebra) from an introductory Abstract Algebra book
