@@ -1,4 +1,6 @@
-Writing little things (currently just proofs) in Lean4 for learning purposes
+Writing little things (currently just proofs) in Lean 4 for learning purposes
+
+Recommendation: if you're reading these proofs (especially if you're relatively new to Lean like me), don't just read the code! Go to [Lean 4 Web](https://live.lean-lang.org/) and paste it in (or use `Load from URL` with the raw link) so you can hover over things and see their type/doc blurbs— that sort of thing can _really_ help in a language where so much information is at the type level.
 
 Currently includes:
 - [Irrationality of the square root of two](Misc/SqrtTwoIrrational.lean)
