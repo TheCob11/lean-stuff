@@ -11,6 +11,7 @@ Currently includes:
     - Contains the same proof twice, with the second one thoroughly commented for someone with a cursory knowledge of type theory/computational proof
 - ["Who Killed Lefty"](Misc/WhoKilledLefty.lean): a neat little problem I saw
     - Notably includes actual definitions of relevant ideas (not just using Mathlib stuff)
-
+- [Integers as equivalence classes of ordered pairs of naturals](Misc/IntAsOrderedPairs.lean)
+- [Unit quaternions have real part zero and square to -1](Misc/UnitQuaternion.lean)
 
 See also [my proofs](https://github.com/TheCob11/PaulinIntroToAbstractAlgebra) from an introductory Abstract Algebra book
