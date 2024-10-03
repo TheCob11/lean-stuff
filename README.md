@@ -13,5 +13,6 @@ Currently includes:
     - Notably includes actual definitions of relevant ideas (not just using Mathlib stuff)
 - [Integers as equivalence classes of ordered pairs of naturals](Misc/IntAsOrderedPairs.lean)
 - [Unit quaternions have real part zero and square to -1](Misc/UnitQuaternion.lean)
+- [$\forall n:\Z, 42 \mid n ^ 7 - n$](Misc/42DvdNPow7MinusN.lean)
 
 See also [my proofs](https://github.com/TheCob11/PaulinIntroToAbstractAlgebra) from an introductory Abstract Algebra book
