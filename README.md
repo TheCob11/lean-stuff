@@ -1,4 +1,4 @@
-Writing little things (currently just proofs) in Lean 4 for learning purposes
+Writing little things (mostly proofs) in Lean 4 for learning purposes
 
 Recommendation: if you're reading these proofs (especially if you're relatively new to Lean like me), don't just read the code! Go to [Lean 4 Web](https://live.lean-lang.org/) and paste it in (or use `Load from URL` with the raw link) so you can hover over things and see their type/doc blurbs— that sort of thing can _really_ help in a language where so much information is at the type level.
 
@@ -14,5 +14,8 @@ Currently includes:
 - [Integers as equivalence classes of ordered pairs of naturals](Misc/IntAsOrderedPairs.lean)
 - [Unit quaternions have real part zero and square to -1](Misc/UnitQuaternion.lean)
 - [$\forall n:\Z, 42 \mid n ^ 7 - n$](Misc/42DvdNPow7MinusN.lean)
+- [FizzBuzz](Misc/FizzBuzz.lean) (lol)
+- [Additive abelian groups admit a unique Z-Module structure](Misc/AddCommGroupZModule.lean)
+- a bunch of other WIP things, may or may not get finished eventually
 
-See also [my proofs](https://github.com/TheCob11/PaulinIntroToAbstractAlgebra) from an introductory Abstract Algebra book
+See also [my proofs](https://github.com/TheCob11/PaulinIntroToAbstractAlgebra) from (lecture notes of?) an introductory Abstract Algebra course
