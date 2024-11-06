@@ -28,16 +28,34 @@ theorem length_le_twenty : seq.val.length ≤ 20 :=
 
 theorem seven_le_length : 7 ≤ seq.val.length := by linarith [seq.twenty_le_len_mul_3]
 
-example : Nat.card (Fin 7 → Fin 3) = 3 ^ 7 := by simp only [card_eq_fintype_card, Fintype.card_pi,
-  Fintype.card_fin, Finset.prod_const, Finset.card_univ, reducePow]
-
 example : {l: List (Fin n) // l.length = m} ≃ Mathlib.Vector (Fin n) m := .refl _
 
-example : Seq20 ↪ List ℕ := .subtype _
-example : Seq20 ≃ {l: List (Fin 4) // (l.map Fin.val).sum = 20 ∧ ∀n ∈ l, 0 < n} where
-  toFun seq := ⟨seq.val.map fun n ↦ ⟨n, sorry⟩, sorry⟩
-  invFun fseq := sorry
-  left_inv := sorry
-  right_inv := sorry
+def equivFin3Sum : Seq20 ≃ {l: List (Fin 3) // (l.map (·.val + 1)).sum = 20} where
+  toFun seq := Subtype.mk
+    (seq.val.attach.map fun ⟨n, hn⟩ ↦
+      ⟨n - 1, sub_one_lt_of_le (pos n hn) (le_three n hn)⟩)
+    <| by
+    simp only [map_map, Function.comp]
+    conv in (_ - 1 + 1) => simp only [Nat.sub_one_add_one (pos _ x.prop).ne']
+    exact attach_map_subtype_val seq.val |>.symm ▸ seq.prop.left
+  invFun x := Subtype.mk (x.val.map (·.val + 1))
+    <| by
+    simp_all only [sum_map_add, mem_map, forall_exists_index, and_imp,
+      forall_apply_eq_imp_iff₂, self_eq_add_left, reduceEqDiff]
+    obtain ⟨l, hl⟩ := x
+    simp only
+    simp_all only [sum_map_add, true_and]
+    intro a a_1
+    fin_cases a <;> simp
+  left_inv x := Subtype.ext <| by
+    simp only [map_map, Function.comp]
+    conv in (_ - 1 + 1) => simp only [Nat.sub_one_add_one (pos _ x.prop).ne']
+    simp only [attach_map_subtype_val]
+  right_inv x := Subtype.ext <| List.ext_getElem
+    (by simp only [length_map, length_attach])
+    fun _ _ _ ↦ by simp only [Nat.add_one_sub_one, getElem_map, getElem_attach]
+
+example (l: List ℕ) : (l.map (· + 1)).sum = l.sum + l.length := by
+  simp only [sum_map_add, map_id', map_const', sum_replicate, smul_eq_mul, mul_one]
 
 proof_wanted card_eq : Nat.card Seq20 = sorry
