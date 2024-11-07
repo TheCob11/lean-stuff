@@ -16,6 +16,7 @@ Currently includes:
 - [$\forall n:\Z, 42 \mid n ^ 7 - n$](Misc/42DvdNPow7MinusN.lean)
 - [FizzBuzz](Misc/FizzBuzz.lean) (lol)
 - [Additive abelian groups admit a unique Z-Module structure](Misc/AddCommGroupZModule.lean)
-- a bunch of other WIP things, may or may not get finished eventually
+- [Actions (group, monoid, ring(module)) are equivalent to homomorphisms to endomorphism structures](Misc/Actions.lean)
+- a bunch of other small and/or WIP things, may or may not get finished eventually
 
 See also [my proofs](https://github.com/TheCob11/PaulinIntroToAbstractAlgebra) from (lecture notes of?) an introductory Abstract Algebra course
