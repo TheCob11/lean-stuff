@@ -5,6 +5,7 @@ namespace Chopsticks
 inductive Side | L | R deriving Repr
 open Side
 
+@[ext]
 structure Fingers (nF: ℕ) where
   (l r: ZMod nF)
   -- for eliminating redundancies
@@ -12,13 +13,13 @@ structure Fingers (nF: ℕ) where
 deriving Repr, DecidableEq
 
 namespace Fingers
-abbrev get (f: Fingers nF) : Side → ZMod nF
+variable (f: Fingers nF)
+abbrev get : Side → ZMod nF
 | L => f.l | R => f.r
 
-abbrev total (f: Fingers nF) : ℕ :=
-  f.l.val + f.r.val
+abbrev total : ℕ := f.l.val + f.r.val
 
-theorem total_le [NeZero nF] (f: Fingers nF) : f.total ≤ 2 * nF :=
+theorem total_le [NeZero nF] : f.total ≤ 2 * nF :=
   nF.two_mul ▸ Nat.add_le_add f.l.val_le f.r.val_le
 
 abbrev mk_le (l r : ZMod nF) (h: l.val ≤ r.val) : Fingers nF := mk l r h
@@ -26,10 +27,31 @@ abbrev mk_le (l r : ZMod nF) (h: l.val ≤ r.val) : Fingers nF := mk l r h
 abbrev mk_order (n₁ n₂ : ZMod nF) : Fingers nF :=
   Nat.le_or_le n₁.val n₂.val |>.by_cases (mk_le n₁ n₂) (mk_le n₂ n₁)
 
-def recieve (f: Fingers nF) (n: ZMod nF) (s: Side) : Fingers nF :=
-  mk_order.uncurry <| match s with
+theorem mk_order_swap [NeZero nF] (n₁ n₂ : ZMod nF) :
+  mk_order n₁ n₂ = mk_order n₂ n₁ := match h: cmp n₁.val n₂.val with
+  | .eq => ZMod.val_injective nF (cmp_eq_eq_iff .. |>.mp h) ▸ rfl
+  | .gt =>
+    have h_lt : n₂.val < n₁.val := cmp_eq_gt_iff .. |>.mp h
+    dif_neg h_lt.not_le |>.trans <| dif_pos h_lt.le |>.symm
+  | .lt =>
+    have h_lt : n₁.val < n₂.val := cmp_eq_lt_iff .. |>.mp h
+    Eq.symm <|
+    dif_neg h_lt.not_le |>.trans <| dif_pos h_lt.le |>.symm
+
+def recieve (n: ZMod nF) (s: Side) : Fingers nF := mk_order.uncurry <| match s with
   | L => (f.l + n, f.r)
   | R => (f.l,     f.r + n)
+
+def equivSym2 [NeZero nF] : Fingers nF ≃ Sym2 (ZMod nF) where
+  toFun f := s(f.l, f.r)
+  invFun := Sym2.lift ⟨mk_order, mk_order_swap⟩
+  left_inv f := dif_pos f.l_le_r
+  right_inv := Sym2.ind fun x y ↦ Sym2.eq_iff.mpr <| by
+    dsimp only [Sym2.lift_mk, mk_order, Or.by_cases]
+    split
+    · exact Set.pair_eq_pair_iff.mp rfl
+    · exact Set.pair_eq_pair_iff.mp rfl |>.symm
+
 end Fingers
 
 abbrev Player nP := Fin nP
@@ -38,7 +60,7 @@ def Game (nP nF : ℕ) := Player nP → Fingers nF
 instance : Repr (Game nP nF) := PiFin.hasRepr
 
 instance : Inhabited (Game nP nF) where
-  default _ := ⟨1, 1, le_refl _⟩
+  default := fun _ ↦ ⟨1, 1, le_refl _⟩
 
 structure Attack (nP) where
   (s_from s_to : Side)
