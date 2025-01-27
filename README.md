@@ -19,6 +19,7 @@ Recommendation: if you're reading these proofs (especially if you're relatively 
 - [Actions (group, monoid, ring(module)) are equivalent to homomorphisms to endomorphism structures](Misc/Actions.lean)
 - [Diaconescu's theorem, deriving excluded middle from choice](Misc/Diaconescu.lean)
 - [Playing around with limits in category theory](Misc/CategoricalLimits.lean) (not polished but somewhat presentable compared to the WIPs)
+- [First Isomorphism Theorem](Misc/FirstIso.lean)
 
 Also includes a bunch of other small and/or WIP things which may or may not get finished eventually, including:
 - Various neural network/neural network-adjacent experiements based on a few papers: [NNet](Misc/NNet.lean), [NNetOld](Misc/NNetOld.lean), [FreeMonad](Misc/FreeMonad.lean), [Quiver](Misc/Quiver.lean)
