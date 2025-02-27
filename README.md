@@ -20,9 +20,13 @@ Recommendation: if you're reading these proofs (especially if you're relatively 
 - [Diaconescu's theorem, deriving excluded middle from choice](Misc/Diaconescu.lean)
 - [Playing around with limits in category theory](Misc/CategoricalLimits.lean) (not polished but somewhat presentable compared to the WIPs)
 - [First Isomorphism Theorem](Misc/FirstIso.lean)
+- [Showing a specific subtype of $\R$ forms a group under a certain multiplication](Misc/CustomRealGroup.lean) (Random problem I found)
+- [Continuous injections are strictly monotone or antitone](Misc/ContinuousInjectionMonotone.lean)
 
-Also includes a bunch of other small and/or WIP things which may or may not get finished eventually, including:
+Also includes a bunch of other small, unpolished, and/or WIP things which may or may not get finished eventually, including:
+- [Unpolished proof that the freshman's dream $(a+b)^2=a^2+b^2$ is independent of the ring axioms](Misc/FreshmansDreamIndepRing.lean)
 - Various neural network/neural network-adjacent experiements based on a few papers: [NNet](Misc/NNet.lean), [NNetOld](Misc/NNetOld.lean), [FreeMonad](Misc/FreeMonad.lean), [Quiver](Misc/Quiver.lean)
+- [Proof of Russel's Paradox, and a WIP attempt to implement the ultra mega general Lawvere's fixed point theorem](Misc/RusselsParadox.lean)
 - [WIP implementation of the Chopsticks game](Misc/Chopsticks.lean)
 - and more (really, every file that isn't linked in the main list)
 

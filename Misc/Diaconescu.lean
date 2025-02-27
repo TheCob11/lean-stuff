@@ -42,3 +42,12 @@ theorem diaconescu
 example : (p: Prop) → p ∨ ¬p := diaconescu Prop
   (fun h ↦ funext fun x ↦ propext ⟨fun _ ↦ (h x).right, fun _ ↦ (h x).left⟩)
   Exists.choose Exists.choose_spec
+
+theorem funext_of_and_iff_setext_univ :
+  (∀{f g : α → Prop}, (∀x, f x ∧ g x) → f = g) ↔ (∀{f: Set α}, (∀x, x ∈ f) → f = Set.univ) where
+  mp funext_of_and _ h := funext_of_and fun x ↦ ⟨h x, trivial⟩
+  mpr setext_univ _ _ h := setext_univ (h · |>.left) |>.trans <| setext_univ (h · |>.right) |>.symm
+
+/-- info: 'funext_of_and_iff_setext_univ' does not depend on any axioms -/
+#guard_msgs in
+#print axioms funext_of_and_iff_setext_univ
