@@ -27,6 +27,9 @@ Also includes a bunch of other small, unpolished, and/or WIP things which may or
 - [Unpolished proof that the freshman's dream $(a+b)^2=a^2+b^2$ is independent of the ring axioms](Misc/FreshmansDreamIndepRing.lean)
 - Various neural network/neural network-adjacent experiements based on a few papers: [NNet](Misc/NNet.lean), [NNetOld](Misc/NNetOld.lean), [FreeMonad](Misc/FreeMonad.lean), [Quiver](Misc/Quiver.lean)
 - [Proof of Russel's Paradox, and a WIP attempt to implement the ultra mega general Lawvere's fixed point theorem](Misc/RusselsParadox.lean)
+- [Intermediate Value Theorem with WIP generalizations](Misc/IntermediateValue.lean)
+- [Squeeze Theorem with WIP ~generalizations/stuff about order topology](Misc/SqueezeTheorem.lean)
+- [WIP Proof of minimal axioms for boolean algebras](Misc/BooleanAlgebra.lean)
 - [WIP implementation of the Chopsticks game](Misc/Chopsticks.lean)
 - and more (really, every file that isn't linked in the main list)
 
